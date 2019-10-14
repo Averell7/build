@@ -113,10 +113,10 @@ case "$1" in
 		syncToDisk
 		;;
 	postrotate)
-		cd /var/log.hdd/
+		cd $HDD_LOG
 		find . -type f -print | grep -E -v "(\.gz|\.xz|\.[0-9]|armbian-ramlog)" | while IFS= read -r  file
 		do
-	    		dest="/var/log/$file"
+	    		dest="$RAM_LOG$file"
 	    		cat $file > $dest	    
 		done
 		;;
